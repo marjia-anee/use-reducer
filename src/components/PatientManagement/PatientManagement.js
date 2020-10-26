@@ -22,7 +22,9 @@ const PatientManagement = () => {
                 <input ref={nameRef}></input>
             </form>
             {
-                state.patients.map(pt => <li key={pt.id}>{pt.name}</li>)
+                state.patients.map(pt => <li key={pt.id}
+                    onClick={() => dispatch({type: 'REMOVE_PATIENT', id: pt.id})}
+                >{pt.name}</li>)
             }
         </div>
     );

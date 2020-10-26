@@ -3,6 +3,7 @@ export const patientState = {
 }
 
 export const patientReducers = (state, action) => {
+    
     switch (action.type) {
         case 'ADD_PATIENT':
             const newPatient = {
@@ -13,7 +14,9 @@ export const patientReducers = (state, action) => {
             return {patients: allPatients};
 
         case 'REMOVE_PATIENT':
-            return state;
+            const remaining = state.patients.filter(pt => pt.id != action.id);
+            const newState = {patients: remaining}
+            return newState;
         default:
             return state;
     }
